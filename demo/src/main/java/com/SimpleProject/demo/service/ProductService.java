@@ -14,9 +14,10 @@ public class ProductService {
     {
         return products.stream().filter(p->p.getProductId()==prodId).findFirst().get();
     }
-    public void addProduct(Products prod)
+    public String addProduct(Products prod)
     {
+        
         products.add(prod);
-       
+        return "Product added successfully";
     }
 }

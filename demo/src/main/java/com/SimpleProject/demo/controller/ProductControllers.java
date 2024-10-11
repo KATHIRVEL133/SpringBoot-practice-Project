@@ -3,9 +3,11 @@ package com.SimpleProject.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.SimpleProject.demo.model.Products;
@@ -15,6 +17,7 @@ import com.SimpleProject.demo.service.ProductService;
 public class ProductControllers {
      @Autowired
     ProductService service;
+
     @GetMapping("/getProducts")
     public List<Products> getProducts()
     {
@@ -26,9 +29,9 @@ public class ProductControllers {
        return service.getProductById(prodId);
     }
     @PostMapping("/product")
-    public void postProduct(Products prod)
+    public String addProduct(@RequestBody Products prod)
     {
-       service.addProduct(prod);
+      return service.addProduct(prod);
     }
 
 }
